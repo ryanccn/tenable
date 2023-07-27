@@ -59,7 +59,7 @@ export default {
 		const { pathname } = new URL(req.url);
 
 		if (pathname.endsWith('/script.js')) return handleScript(req);
-		else if (pathname.endsWith('/api/event')) return handleApi(req);
+		else if (pathname.endsWith('/event')) return handleApi(req);
 
 		return new Response(null, { status: 404 });
 	},
