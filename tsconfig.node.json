@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"strict": true,
+		"downlevelIteration": true,
+		"module": "esnext",
+		"target": "esnext",
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"isolatedModules": true,
+		"skipLibCheck": true,
+		"composite": true
+	},
+	"include": ["build.ts"]
+}

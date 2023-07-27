@@ -1,0 +1,27 @@
+{
+	"name": "tenable",
+	"private": true,
+	"type": "module",
+	"license": "AGPL-3.0-only",
+	"scripts": {
+		"build": "tsx build.ts",
+		"dev": "wrangler dev",
+		"deploy": "wrangler deploy",
+		"lint": "eslint .",
+		"format": "prettier --write ."
+	},
+	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20230724.0",
+		"@types/node": "^20.4.5",
+		"@typescript-eslint/eslint-plugin": "^6.2.0",
+		"@typescript-eslint/parser": "^6.2.0",
+		"esbuild": "^0.18.17",
+		"eslint": "^8.45.0",
+		"eslint-plugin-unicorn": "^48.0.1",
+		"prettier": "^3.0.0",
+		"tsx": "^3.12.7",
+		"typescript": "^5.1.6",
+		"wrangler": "^3.3.0"
+	},
+	"packageManager": "pnpm@8.6.10"
+}

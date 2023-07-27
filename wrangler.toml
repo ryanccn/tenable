@@ -1,0 +1,9 @@
+name = "tenable"
+main = "dist/worker.js"
+compatibility_date = "2023-07-17"
+
+workers_dev = false
+send_metrics = false
+
+[build]
+command = "tsx build.ts"
