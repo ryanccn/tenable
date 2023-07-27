@@ -23,6 +23,8 @@ const post = () => {
 	});
 };
 
+post();
+
 window.addEventListener('popstate', () => {
 	setTimeout(() => {
 		post();
