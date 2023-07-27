@@ -2,6 +2,9 @@ const getOption = (name: string): string | null => {
 	return document.currentScript?.getAttribute(`data-${name}`) ?? null;
 };
 
+const endpoint = getOption('api') ?? 'https://plausible.io/api/event';
+const domain = getOption('domain') ?? location.hostname;
+
 const post = () => {
 	if (document.readyState === 'complete') {
 		if (
@@ -10,9 +13,6 @@ const post = () => {
 		) {
 			return;
 		}
-
-		const endpoint = getOption('api') ?? 'https://plausible.io/api/event';
-		const domain = getOption('domain') ?? location.hostname;
 
 		const url = location.href;
 		const referrer = document.referrer;
