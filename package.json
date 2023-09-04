@@ -19,7 +19,7 @@
 		"esbuild": "^0.18.17",
 		"eslint": "^8.45.0",
 		"eslint-plugin-unicorn": "^48.0.1",
-		"prettier": "^3.0.0",
+		"prettier": "^3.0.3",
 		"tsx": "^3.12.7",
 		"typescript": "^5.1.6",
 		"wrangler": "^3.3.0"
