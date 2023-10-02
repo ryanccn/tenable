@@ -22,7 +22,7 @@
 		"prettier": "^3.0.0",
 		"tsx": "^3.12.7",
 		"typescript": "^5.1.6",
-		"wrangler": "^3.3.0"
+		"wrangler": "^3.10.1"
 	},
 	"packageManager": "pnpm@8.6.10"
 }
