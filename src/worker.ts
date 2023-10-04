@@ -1,4 +1,5 @@
 declare const TENABLE_SCRIPT: string;
+
 const handleScript = async (req: Request) => {
 	if (!TENABLE_SCRIPT) {
 		return new Response(JSON.stringify({ error: 'Script not defined in worker' }), {
