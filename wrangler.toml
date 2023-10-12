@@ -1,6 +1,6 @@
 name = "tenable"
 main = "dist/worker.js"
-compatibility_date = "2023-07-17"
+compatibility_date = "2023-10-10"
 
 workers_dev = false
 send_metrics = false
