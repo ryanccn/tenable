@@ -35,19 +35,13 @@ const handleApi = async (req: Request) => {
 		return new Response(null, { status: 400 });
 	}
 
-	const headers = req.headers;
-
-	const userAgentH = headers.get('user-agent');
-	const xForwardedForH = headers.get('x-forwarded-for');
+	const forwardHeaders = new Headers(req.headers);
+	forwardHeaders.delete('cookie');
 
 	const upstreamResp = await fetch('https://plausible.io/api/event', {
 		method: 'POST',
 		body: JSON.stringify(data),
-		headers: {
-			'content-type': 'application/json',
-			...(userAgentH ? { 'user-agent': userAgentH } : {}),
-			...(xForwardedForH ? { 'x-forwarded-for': xForwardedForH } : {}),
-		},
+		headers: forwardHeaders,
 	});
 
 	return new Response(null, {
