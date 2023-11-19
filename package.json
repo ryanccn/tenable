@@ -1,5 +1,6 @@
 {
 	"name": "tenable",
+	"version": "0.1.0",
 	"private": true,
 	"type": "module",
 	"license": "AGPL-3.0-only",
@@ -13,16 +14,16 @@
 	"devDependencies": {
 		"@cloudflare/workers-types": "^4.20231025.0",
 		"@microsoft/eslint-formatter-sarif": "^3.0.0",
-		"@types/node": "^20.9.0",
-		"@typescript-eslint/eslint-plugin": "^6.10.0",
-		"@typescript-eslint/parser": "^6.10.0",
-		"esbuild": "^0.19.5",
-		"eslint": "^8.53.0",
+		"@types/node": "^20.9.2",
+		"@typescript-eslint/eslint-plugin": "^6.11.0",
+		"@typescript-eslint/parser": "^6.11.0",
+		"esbuild": "^0.19.6",
+		"eslint": "^8.54.0",
 		"eslint-plugin-unicorn": "^49.0.0",
-		"prettier": "^3.0.3",
-		"tsx": "^4.1.1",
+		"prettier": "^3.1.0",
+		"tsx": "^4.1.4",
 		"typescript": "^5.2.2",
-		"wrangler": "^3.15.0"
+		"wrangler": "^3.16.0"
 	},
-	"packageManager": "pnpm@8.9.0"
+	"packageManager": "pnpm@8.10.5"
 }
