@@ -21,6 +21,7 @@ const post = () => {
 			method: 'POST',
 			headers: { 'content-type': 'application/json' },
 			body: JSON.stringify({ domain, name: 'pageview', url, referrer }),
+			keepalive: true,
 		});
 	} else {
 		const handler = () => {
