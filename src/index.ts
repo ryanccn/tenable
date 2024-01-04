@@ -1,38 +1,29 @@
-const getOption = (name: string): string | null => {
-	return document.currentScript?.getAttribute(`data-${name}`) ?? null;
+const getOption = (name: string): string | null | undefined => {
+	return document.currentScript?.getAttribute(`data-${name}`);
 };
 
 const endpoint = getOption('api') ?? 'https://plausible.io/api/event';
 const domain = getOption('domain') ?? location.hostname;
 
 const post = () => {
-	if (document.readyState === 'complete') {
-		if (
-			/^localhost$|^127(?:\.\d+){1,3}$|^(?:0*:)*?:?0*1$/.test(location.hostname) ||
-			'file:' === location.protocol
-		) {
-			return;
-		}
-
-		const url = location.href;
-		const referrer = document.referrer;
-
-		fetch(endpoint, {
-			method: 'POST',
-			headers: { 'content-type': 'application/json' },
-			body: JSON.stringify({ domain, name: 'pageview', url, referrer }),
-			keepalive: true,
-		});
-	} else {
-		const handler = () => {
-			if (document.readyState === 'complete') {
-				post();
-				document.removeEventListener('readystatechange', handler);
-			}
-		};
-
-		document.addEventListener('readystatechange', handler);
+	if (
+		/^localhost$|^127(?:\.\d+){1,3}$|^(?:0*:)*?:?0*1$/.test(location.hostname) ||
+		'file:' === location.protocol
+	) {
+		return;
 	}
+
+	fetch(endpoint, {
+		method: 'POST',
+		headers: { 'content-type': 'application/json' },
+		body: JSON.stringify({
+			domain,
+			name: 'pageview',
+			url: location.href,
+			referrer: document.referrer,
+		}),
+		keepalive: true,
+	});
 };
 
 post();

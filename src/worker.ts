@@ -8,10 +8,10 @@ const handleScript = async (req: Request) => {
 		});
 	}
 
-	const r = crypto.randomUUID().replaceAll('-', '').slice(0, 8);
+	const r = crypto.randomUUID().replaceAll('-', '').slice(0, 4);
 
 	const patchedScript =
-		`/* ${r} */ ` +
+		`/*${r}*/` +
 		TENABLE_SCRIPT.replaceAll(
 			'https://plausible.io/api/event',
 			new URL('/api/event', req.url).toString(),
@@ -20,7 +20,7 @@ const handleScript = async (req: Request) => {
 	return new Response(patchedScript, {
 		headers: {
 			'content-type': 'text/javascript; charset=utf-8',
-			'cache-control': 'max-age=3600, stale-while-revalidate=86400',
+			'cache-control': 'max-age=60, stale-while-revalidate=3600',
 		},
 	});
 };
@@ -44,9 +44,7 @@ const handleApi = async (req: Request) => {
 		headers: forwardHeaders,
 	});
 
-	return new Response(null, {
-		status: upstreamResp.status,
-	});
+	return new Response(null, { status: upstreamResp.status });
 };
 
 export default {
