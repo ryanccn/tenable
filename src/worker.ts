@@ -1,21 +1,25 @@
 declare const TENABLE_SCRIPT: string;
 
+const randomId = () => {
+	const buf = new Uint8Array(2);
+	crypto.getRandomValues(buf);
+	return [...buf].map((i) => ('0' + i.toString(16)).slice(-2)).join('');
+};
+
+// eslint-disable-next-line @typescript-eslint/require-await
 const handleScript = async (req: Request) => {
 	if (!TENABLE_SCRIPT) {
-		return new Response(JSON.stringify({ error: 'Script not defined in worker' }), {
-			status: 500,
-			headers: { 'content-type': 'text/javascript; charset=utf-8' },
-		});
+		return new Response(
+			JSON.stringify({ error: 'Script not defined in worker' }),
+			{
+				status: 500,
+				headers: { 'content-type': 'text/javascript; charset=utf-8' },
+			},
+		);
 	}
 
-	const r = crypto.randomUUID().replaceAll('-', '').slice(0, 4);
-
-	const patchedScript =
-		`/*${r}*/` +
-		TENABLE_SCRIPT.replaceAll(
-			'https://plausible.io/api/event',
-			new URL('/api/event', req.url).toString(),
-		);
+	const patchedScript = `/*${randomId()}*/`
+		+ TENABLE_SCRIPT.replaceAll('https://plausible.io/api/event', new URL('/api/event', req.url).toString());
 
 	return new Response(patchedScript, {
 		headers: {
